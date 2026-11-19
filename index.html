@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoGrid M2-XFE Toy Model — 9×9 Spectral-Tension Baseline</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🌌 EcoGrid M2-XFE Toy Model <span class="badge">Q16.16 • ≤2000 FLOPs</span></h1>
+    <div class="top-stats">
+      <span id="hud-stage">Stage: BASELINE</span>
+      <span id="hud-cycle">Cycle: 0</span>
+    </div>
+  </header>
+
+  <main class="lab-layout">
+    <section class="grid-panel">
+      <canvas id="m2xfe-canvas" width="486" height="486"></canvas>
+      <p class="hint">Tap any cell on the 9×9 lattice to inject a 5-point radial shock impulse</p>
+      <div id="hud-causa" class="causa-banner calm">
+        [CAUSA ADVISORY] EQUILIBRIUM — Manifold calm within baseline envelope.
+      </div>
+    </section>
+
+    <section class="telemetry-panel">
+      <h3>Pipeline Controls</h3>
+      <div class="btn-row">
+        <button id="btn-baseline">1. Reset Baseline</button>
+        <button id="btn-step">Step +1 Cycle</button>
+        <button id="btn-step10">Step +10 Cycles</button>
+        <button id="btn-auto" class="primary-btn">Run Auto-Relaxation</button>
+      </div>
+
+      <h3>Battle of M2-XFE Shock Scenarios</h3>
+      <div class="preset-col">
+        <button data-preset="centerPulse">1. Center Core Impulse (4, 4)</button>
+        <button data-preset="flankPincer">2. Dual Flank Pincer (2, 1) &amp; (6, 7)</button>
+        <button data-preset="battleFrontline">3. Battle of M2-XFE — Frontline Surge</button>
+      </div>
+
+      <h3>Spectral Metrics &amp; FLOP Governance</h3>
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <span class="m-label">Peak Tension (U_max)</span>
+          <span id="val-peak" class="m-val">0.1500</span>
+        </div>
+        <div class="metric-card">
+          <span class="m-label">Dirichlet Energy E(u)</span>
+          <span id="val-energy" class="m-val">0.0000</span>
+        </div>
+        <div class="metric-card">
+          <span class="m-label">Mean L1 Residual</span>
+          <span id="val-residual" class="m-val">0.0000</span>
+        </div>
+      </div>
+
+      <div class="flop-box">
+        <div class="flop-header">
+          <span>Cycle Compute Budget</span>
+          <span id="val-flops">0 / 2000 FLOPs</span>
+        </div>
+        <div class="flop-track"><div id="bar-flops" class="flop-fill"></div></div>
+      </div>
+
+      <h3>Provenance Lab Notebook (SHA-256)</h3>
+      <button id="btn-manifest">Generate Run Manifest &amp; SHA-256</button>
+      <textarea id="manifest-output" rows="7" readonly placeholder="Click 'Generate Run Manifest & SHA-256' to inspect deterministic state receipt..."></textarea>
+    </section>
+  </main>
+
+  <script type="module" src="src/m2xfe-app.js"></script>
+</body>
+</html>
