@@ -1,0 +1,10 @@
+{
+  "name": "m2xfe-toy-model",
+  "version": "1.0.0",
+  "description": "Zero-float Q16.16 9x9 spectral-tension toy model reconstructing the EcoGrid M2-XFE simulation baseline.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/m2xfe-kernel.test.mjs"
+  },
+  "license": "MIT"
+}
